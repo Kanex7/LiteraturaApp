@@ -15,10 +15,12 @@ public record DatosLibro(
     public String toString() {
 
         return """
+                =======LIBRO=======
                 Titulo:%s
                 Autor:%s
                 Idioma/s:%s
                 Descargas:%d
+                ===================
                 """.formatted(titulo(),
                 autorList().stream().map(e->e.nombreAutor()).findFirst().get(),
                 idiomasList().stream().collect(Collectors.joining(" , ")),

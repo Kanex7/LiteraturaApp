@@ -1,9 +1,11 @@
 package com.alura.literatura.controller;
 
+import com.alura.literatura.model.Autor;
 import com.alura.literatura.model.Libro;
 import com.alura.literatura.repository.LibroRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ConexionDB {
     private LibroRepository repositoryLibros;
@@ -16,5 +18,9 @@ public class ConexionDB {
 
     public List<Libro> buscarTodos() {
         return repositoryLibros.findAll();
+    }
+
+    public Optional<Autor> bucarPorAno(int ano) {
+        return repositoryLibros.findByAnoIgnoreCase(ano);
     }
 }
