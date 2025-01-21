@@ -20,7 +20,5 @@ public class ConexionDB {
         return repositoryLibros.findAll();
     }
 
-    public Optional<Autor> bucarPorAno(int ano) {
-        return repositoryLibros.findByAnoIgnoreCase(ano);
-    }
+
 }

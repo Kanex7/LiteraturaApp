@@ -27,7 +27,13 @@ public class Busquedas {
         if(libro.isPresent()){
             var libroBuscado = libro.get();
             Libro libroCreado = new Libro(libroBuscado);
-            conexionDB.guardar(libroCreado);
+            //Checkeamos que el libro no exista antes de persistir
+            if (!conexionDB.buscarTodos().stream()
+                    .map(l->l.getTitulo()).anyMatch(t->t.equalsIgnoreCase(libroCreado.getTitulo()))){
+                conexionDB.guardar(libroCreado);
+            } else {
+                System.out.println("No se guardó porque ya está registrado");
+            }
             System.out.println(libroBuscado.toString());
         } else {
             System.out.println("\"LIBRO NO ENCONTRADO!\"");
